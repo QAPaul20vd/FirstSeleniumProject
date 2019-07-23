@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class LoginTest {
 
@@ -22,6 +23,8 @@ public class LoginTest {
         driver.findElement(By.cssSelector("#email")).sendKeys("firstkidtest@mailinator.com");
         driver.findElement(By.cssSelector("#pass")).sendKeys("");
         driver.findElement(By.cssSelector("#send2")).click();
+
+
 
         driver.quit();
 
