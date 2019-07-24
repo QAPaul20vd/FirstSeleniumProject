@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 public class LoginTest {
 
     @Test
-    public void valinLoginTest() {
+    public void validLoginTest() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://fasttrackit.org/selenium-test/");
@@ -24,13 +24,42 @@ public class LoginTest {
         driver.findElement(By.cssSelector("#pass")).sendKeys("autotest123");
         driver.findElement(By.cssSelector("#send2")).click();
 
+//        driver.quit();
+    }
 
+    @Test
+    public void invalidMailTest() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://fasttrackit.org/selenium-test/");
+        WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        accountButton.click();
+
+        WebElement loginLink = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        loginLink.click();
+
+        driver.findElement(By.cssSelector("#email")).sendKeys("QAautotest@mailinator");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("autotest123");
+        driver.findElement(By.cssSelector("#send2")).click();
 
 //        driver.quit();
+    }
 
+    @Test
+    public void wrongPasswordTest() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://fasttrackit.org/selenium-test/");
+        WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        accountButton.click();
 
+        WebElement loginLink = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        loginLink.click();
 
+        driver.findElement(By.cssSelector("#email")).sendKeys("QAautotest@mailinator.com");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("autotest");
+        driver.findElement(By.cssSelector("#send2")).click();
 
-
+//        driver.quit();
     }
 }
