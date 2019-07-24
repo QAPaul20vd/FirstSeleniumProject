@@ -62,4 +62,22 @@ public class LoginTest {
 
 //        driver.quit();
     }
+
+    @Test
+    public void emptyFieldsTest() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://fasttrackit.org/selenium-test/");
+        WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        accountButton.click();
+
+        WebElement loginLink = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
+        loginLink.click();
+
+        driver.findElement(By.cssSelector("#email")).sendKeys("");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("");
+        driver.findElement(By.cssSelector("#send2")).click();
+
+//        driver.quit();
+    }
 }

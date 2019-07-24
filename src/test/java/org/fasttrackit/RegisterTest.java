@@ -31,7 +31,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void userDifferentPassRegTest() {
+    public void userDifferentConfirmPassRegTest() {
         System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://fasttrackit.org/selenium-test/");
@@ -45,7 +45,30 @@ public class RegisterTest {
         driver.findElement(By.id("firstname")).sendKeys("Auto");
         driver.findElement(By.id("middlename")).sendKeys("Ini");
         driver.findElement(By.id("lastname")).sendKeys("Test");
-        driver.findElement(By.name("email")).sendKeys("QAautotest@mailinator.oom");
+        driver.findElement(By.name("email")).sendKeys("QAautotest@mailinator.com");
+        driver.findElement(By.name("password")).sendKeys("autotest123");
+        driver.findElement(By.id("confirmation")).sendKeys("autotest");
+        driver.findElement(By.xpath("//*[@id=\"is_subscribed\"]")).click();
+
+        driver.quit();
+    }
+
+    @Test
+    public void invalidMailRegTest() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://fasttrackit.org/selenium-test/");
+
+        WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
+        accountButton.click();
+
+        WebElement registerButton = driver.findElement(By.cssSelector("#header-account > div > ul > li:nth-child(5) > a"));
+        registerButton.click();
+
+        driver.findElement(By.id("firstname")).sendKeys("Auto");
+        driver.findElement(By.id("middlename")).sendKeys("Ini");
+        driver.findElement(By.id("lastname")).sendKeys("Test");
+        driver.findElement(By.name("email")).sendKeys("QAautotest@mailinator");
         driver.findElement(By.name("password")).sendKeys("autotest123");
         driver.findElement(By.id("confirmation")).sendKeys("autotest");
         driver.findElement(By.xpath("//*[@id=\"is_subscribed\"]")).click();

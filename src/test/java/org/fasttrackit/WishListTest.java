@@ -20,10 +20,9 @@ public class WishListTest {
                 "div > div.col-wrapper > div.col-main > div.category-products > ul > li:nth-child(1) > div > div.actions > a"));
         detailsButton.click();
 
-        WebElement addToWishlist = driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop > div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a"));
+        WebElement addToWishlist = driver.findElement(By.cssSelector("#product_addtocart_form > div.product-shop >" +
+                "div.product-options-bottom > ul.add-to-links > li:nth-child(1) > a"));
         addToWishlist.click();
-
-
 
         driver.quit();
     }
