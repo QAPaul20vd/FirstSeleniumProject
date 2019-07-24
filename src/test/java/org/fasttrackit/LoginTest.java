@@ -20,13 +20,13 @@ public class LoginTest {
         WebElement loginLink = driver.findElement(By.cssSelector("#header-account > div > ul > li.last > a"));
         loginLink.click();
 
-        driver.findElement(By.cssSelector("#email")).sendKeys("firstkidtest@mailinator.com");
-        driver.findElement(By.cssSelector("#pass")).sendKeys("");
+        driver.findElement(By.cssSelector("#email")).sendKeys("QAautotest@mailinator.com");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("autotest123");
         driver.findElement(By.cssSelector("#send2")).click();
 
 
 
-        driver.quit();
+//        driver.quit();
 
 
 
