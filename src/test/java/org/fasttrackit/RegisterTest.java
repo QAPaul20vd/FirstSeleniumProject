@@ -1,5 +1,7 @@
 package org.fasttrackit;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,10 +9,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class RegisterTest {
+    private static WebDriver driver;
+
+    @BeforeClass
+
+    public static void initDriver() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+    }
+
     @Test
     public void userValidRegTest() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+
         driver.get("https://fasttrackit.org/selenium-test/");
 
         WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
@@ -27,13 +38,10 @@ public class RegisterTest {
         driver.findElement(By.id("confirmation")).sendKeys("autotest123");
         driver.findElement(By.xpath("//*[@id=\"is_subscribed\"]")).click();
 
-        driver.quit();
     }
 
     @Test
     public void userDifferentConfirmPassRegTest() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
         driver.get("https://fasttrackit.org/selenium-test/");
 
         WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
@@ -50,13 +58,11 @@ public class RegisterTest {
         driver.findElement(By.id("confirmation")).sendKeys("autotest");
         driver.findElement(By.xpath("//*[@id=\"is_subscribed\"]")).click();
 
-        driver.quit();
     }
 
     @Test
     public void invalidMailRegTest() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+
         driver.get("https://fasttrackit.org/selenium-test/");
 
         WebElement accountButton = driver.findElement(By.cssSelector("#header > div > div.skip-links > div > a > span.label"));
@@ -72,7 +78,10 @@ public class RegisterTest {
         driver.findElement(By.name("password")).sendKeys("autotest123");
         driver.findElement(By.id("confirmation")).sendKeys("autotest");
         driver.findElement(By.xpath("//*[@id=\"is_subscribed\"]")).click();
+    }
 
+    @AfterClass
+    public static void quit() {
         driver.quit();
     }
 
