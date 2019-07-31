@@ -86,7 +86,33 @@ public class WishListTest {
         Assert.assertTrue(myWishList.isDisplayed());
     }
 
+    @Test
+    public void removeItem(){
+        addToWishListUserLoggedIn();
 
+//        Click on Remove Button
+        driver.findElement(By.cssSelector(".btn-remove")).click();
+//        Accept to remove
+        driver.switchTo().alert().accept();
+
+//        Verify if the wishlist is empty
+        Assert.assertTrue(driver.findElement(By.cssSelector(".wishlist-empty")).isDisplayed());
+    }
+
+    @Test
+    public void editDetails(){
+        addToWishListUserLoggedIn();
+
+        driver.findElement(By.cssSelector("td:nth-child(5) a.link-edit")).click();
+
+        driver.findElement(By.cssSelector("span img")).click();
+
+        driver.findElement(By.cssSelector(".input-box ul li:nth-child(3)")).click();
+
+        driver.findElement(By.cssSelector("li:first-child a.link-compare")).click();
+
+        Assert.assertTrue(driver.findElement(By.cssSelector("td:nth-child(5) a.details")).isDisplayed());
+    }
 
     @AfterClass
     public static void quit() {

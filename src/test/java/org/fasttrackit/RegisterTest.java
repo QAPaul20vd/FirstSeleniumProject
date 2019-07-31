@@ -34,10 +34,10 @@ public class RegisterTest {
         registerButton.click();
 
 //        Fill in all the required fields
-        driver.findElement(By.id("firstname")).sendKeys("Auto3");
+        driver.findElement(By.id("firstname")).sendKeys("Auto4");
         driver.findElement(By.id("middlename")).sendKeys("Ini");
         driver.findElement(By.id("lastname")).sendKeys("Test");
-        driver.findElement(By.name("email")).sendKeys("QAautotest3@mailinator.com");
+        driver.findElement(By.name("email")).sendKeys("QAautotest4@mailinator.com");
         driver.findElement(By.name("password")).sendKeys("autotest123");
         driver.findElement(By.id("confirmation")).sendKeys("autotest123");
 
