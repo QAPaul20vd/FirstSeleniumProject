@@ -88,7 +88,41 @@ public class WishListTest {
 
     @Test
     public void removeItem(){
-        addToWishListUserLoggedIn();
+        driver.get("https://fasttrackit.org/selenium-test/");
+
+//        Login with valid account
+        WebElement accountButton = driver.findElement(By.cssSelector(".skip-account"));
+        accountButton.click();
+
+        WebElement loginLink = driver.findElement(By.cssSelector("a[title^=Log]"));
+        loginLink.click();
+
+        driver.findElement(By.cssSelector("#email")).sendKeys("QAautotest@mailinator.com");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("autotest123");
+        driver.findElement(By.cssSelector("#send2")).click();
+
+//        Verify that the User is Logged In
+        WebElement helloText = driver.findElement(By.cssSelector(".welcome-msg .hello"));
+        Assert.assertEquals("Hello, Auto Test!", helloText.getText());
+
+        driver.findElement(By.cssSelector(".skip-account")).click();
+        Assert.assertTrue(driver.findElement(By.cssSelector("a[title='Log Out']")).isDisplayed());
+
+//        Navigate to Sale Menu
+        WebElement saleButton = driver.findElement(By.cssSelector(".nav-5"));
+        saleButton.click();
+
+//      Navigate to Detail page of the first product
+        WebElement detailsButton = driver.findElement(By.cssSelector(".products-grid > li:first-child a[title^=View]"));
+        detailsButton.click();
+
+//        Add product to WishList
+        WebElement addToWishList = driver.findElement(By.cssSelector(".link-wishlist"));
+        addToWishList.click();
+
+//        Verify that the product is added to My WishList
+        WebElement myWishList = driver.findElement(By.cssSelector(".my-wishlist"));
+        Assert.assertTrue(myWishList.isDisplayed());
 
 //        Click on Remove Button
         driver.findElement(By.cssSelector(".btn-remove")).click();
